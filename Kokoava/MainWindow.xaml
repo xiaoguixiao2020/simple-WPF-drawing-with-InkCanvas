@@ -4,27 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kokoava"
+        xmlns:p="clr-namespace:Kokoava.Properties"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
         Title="Kokoava tehtävä" Height="500" Width="800" ResizeMode="NoResize">
 
     <DockPanel>
         <Menu DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
-            <MenuItem Header="Tiedosto">
-                <MenuItem Header="Avaa..." Click="MenuItem_Open_MouseLeftButtonDown"/>
-                <MenuItem Header="Tallenna" Click="MenuItem_Save_MouseLeftButtonDown"/>
+            <MenuItem Header="{x:Static p:Resources.Tiedosto}">
+                <MenuItem Header="{x:Static p:Resources.Avaa}" Click="MenuItem_Open_MouseLeftButtonDown"/>
+                <MenuItem Header="{x:Static p:Resources.Tallenna}" Click="MenuItem_Save_MouseLeftButtonDown"/>
                 <Separator/>
-                <MenuItem Header="Lopeta" Click="MenuItem_ExitClick"/>
+                <MenuItem Header="{x:Static p:Resources.Lopeta}" Click="MenuItem_ExitClick"/>
             </MenuItem>
         </Menu>
         <StackPanel Background="#FFe5e5e5">
             <ToolBar Name="DrawinToolbar" Height="48" Width="800">
-                <RadioButton Background="#FFD2D2D2" Content="Piirrä" Height="40" Width="50" GroupName="drawGroup" Click="DrawButton_Click"/>
-                <RadioButton Background="#FFD2D2D2" Content="Pyyhi" Height="40" Width="50" GroupName="drawGroup" Click="DrawButton_Click"/>
-                <RadioButton Background="#FFD2D2D2" Content="Valitse" Height="40" Width="50" GroupName="drawGroup" Click="DrawButton_Click"/>
-                <wpfTool:ColorPicker x:Name="Colorpicker" Width="70" SelectedColor="Black" Margin="10,10" ToolTip="Siveltimen väri"/>
+                <RadioButton Background="#FFD2D2D2" Content="{x:Static p:Resources.Piirrä}" Name="Piirrä" Height="40" Width="50" GroupName="drawGroup" Click="DrawButton_Click"/>
+                <RadioButton Background="#FFD2D2D2" Content="{x:Static p:Resources.Pyyhi}" Name="Pyyhi" Height="40" Width="50" GroupName="drawGroup" Click="DrawButton_Click"/>
+                <RadioButton Background="#FFD2D2D2" Content="{x:Static p:Resources.Valitse}" Name="Valitse"  Height="40" Width="50" GroupName="drawGroup" Click="DrawButton_Click"/>
+                <wpfTool:ColorPicker x:Name="Colorpicker" Width="70" SelectedColor="Black" Margin="10,10" ToolTip="{x:Static p:Resources.siveltimen_vari}"/>
                 <StackPanel>
-                    <ComboBox x:Name="siveltimen_koko" Width="70" SelectedIndex="0" Margin="10,10" ToolTip="Siveltimen koko">
+                    <ComboBox x:Name="siveltimen_koko" Width="70" SelectedIndex="0" Margin="10,10" ToolTip="{x:Static p:Resources.siveltimen_koko}">
                         <ComboBoxItem Content="2"/>
                         <ComboBoxItem Content="4"/>
                         <ComboBoxItem Content="6"/>
@@ -37,7 +38,7 @@
                         <ComboBoxItem Content="75"/>
                     </ComboBox>
                 </StackPanel>
-                <Button Content="Puhdista ruutu" Width="109" Height="40" Click="Puhdista_Ruutu_Button_Click" Background="#FFD2D2D2"/>
+                <Button Content="{x:Static p:Resources.puhdista_ruutu}" Width="109" Height="40" Click="Puhdista_Ruutu_Button_Click" Background="#FFD2D2D2"/>
             </ToolBar>
             <InkCanvas Name="MyCanvas" MouseEnter="MyCanvas_MouseEnter" Width="800" Height="416" UseCustomCursor="true" Cursor="Pen">
                 <InkCanvas.DefaultDrawingAttributes>

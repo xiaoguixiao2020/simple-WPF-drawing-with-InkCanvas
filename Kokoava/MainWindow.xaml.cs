@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,8 @@ namespace Kokoava
         
         public MainWindow()
         {
+            //Kieliasetus lokalisoinnin testausta varten
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             InitializeComponent();
         }
 
@@ -35,7 +38,7 @@ namespace Kokoava
         {
             
             var radiobutton = sender as RadioButton;
-            string radioBPressed = radiobutton.Content.ToString();
+            string radioBPressed = radiobutton.Name.ToString();
             
 
 
